@@ -18,8 +18,10 @@ namespace Point_Of_Sale
         /// </summary>
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-			dbHandler.InsertDistributor(tbDistName.Text, tbContactName.Text, tbContactNum.Text);
-            Close();
+			if(dbHandler.InsertDistributor(tbDistName.Text, tbContactName.Text, tbContactNum.Text)) // If the entry was successfully inserted into PoS.db
+			{
+				Close();
+			}
         }
 
         /// <summary>
