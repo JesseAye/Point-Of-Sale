@@ -111,6 +111,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(215, 123);
+			this.ControlBox = false;
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnAdd);
 			this.Controls.Add(this.lblContactName);
@@ -119,9 +120,10 @@
 			this.Controls.Add(this.tbContactName);
 			this.Controls.Add(this.tbDistName);
 			this.Controls.Add(this.lblDistributorName);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "AddDistributor";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "AddDistributor";
+			this.Text = "Add Distributor";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

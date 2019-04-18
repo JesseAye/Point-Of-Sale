@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Point_Of_Sale
 {
-    public partial class Form1 : Form
+    public partial class MainUI : Form
     {
-        public Form1()
+        public MainUI()
         {
             InitializeComponent();
         }
@@ -22,5 +22,11 @@ namespace Point_Of_Sale
             AddDistributor AddDistWindow = new AddDistributor();
             AddDistWindow.ShowDialog();
         }
-    }
+
+		private void ManageDistributorsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			ManageDistributors ManageDistributorsWindow = new ManageDistributors();
+			ManageDistributorsWindow.ShowDialog();
+		}
+	}
 }

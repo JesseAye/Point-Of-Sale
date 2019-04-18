@@ -1,6 +1,6 @@
 ﻿namespace Point_Of_Sale
 {
-    partial class Form1
+    partial class MainUI
     {
         /// <summary>
         /// Required designer variable.
@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.menuStripMainUI = new System.Windows.Forms.MenuStrip();
 			this.maintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.manageDistributorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.addDistributorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.menuStrip1.SuspendLayout();
+			this.menuStripMainUI.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// menuStrip1
+			// menuStripMainUI
 			// 
-			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.menuStripMainUI.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.maintenanceToolStripMenuItem});
-			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-			this.menuStrip1.TabIndex = 0;
-			this.menuStrip1.Text = "menuStrip1";
+			this.menuStripMainUI.Location = new System.Drawing.Point(0, 0);
+			this.menuStripMainUI.Name = "menuStripMainUI";
+			this.menuStripMainUI.Size = new System.Drawing.Size(800, 24);
+			this.menuStripMainUI.TabIndex = 0;
+			this.menuStripMainUI.Text = "menuStrip1";
 			// 
 			// maintenanceToolStripMenuItem
 			// 
@@ -61,6 +61,7 @@
 			this.manageDistributorsToolStripMenuItem.Name = "manageDistributorsToolStripMenuItem";
 			this.manageDistributorsToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
 			this.manageDistributorsToolStripMenuItem.Text = "Manage Distributors";
+			this.manageDistributorsToolStripMenuItem.Click += new System.EventHandler(this.ManageDistributorsToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
@@ -74,18 +75,18 @@
 			this.addDistributorToolStripMenuItem.Text = "Add Distributor";
 			this.addDistributorToolStripMenuItem.Click += new System.EventHandler(this.AddDistributorToolStripMenuItem_Click);
 			// 
-			// Form1
+			// MainUI
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.menuStrip1);
-			this.MainMenuStrip = this.menuStrip1;
-			this.Name = "Form1";
+			this.Controls.Add(this.menuStripMainUI);
+			this.MainMenuStrip = this.menuStripMainUI;
+			this.Name = "MainUI";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Point of Sale";
-			this.menuStrip1.ResumeLayout(false);
-			this.menuStrip1.PerformLayout();
+			this.menuStripMainUI.ResumeLayout(false);
+			this.menuStripMainUI.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -93,7 +94,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStripMainUI;
         private System.Windows.Forms.ToolStripMenuItem maintenanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageDistributorsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

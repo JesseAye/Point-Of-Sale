@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
@@ -22,12 +23,33 @@ namespace Point_Of_Sale
 		/// Gets the existing list of distributors from PoS.db
 		/// </summary>
 		/// <returns></returns>
-		public static string ReadDistributors()
+		public static void ReadDistributors()
 		{
+			DataTable output = new DataTable();
+			output.Columns.Add("Id");
+			output.Columns.Add("CompanyName");
+			output.Columns.Add("ContactName");
+			output.Columns.Add("ContactNumber");
+
 			using (SQLiteConnection connection = new SQLiteConnection(LoadConnectionString()))
 			{
-				var output = connection.Query<string>("SELECT * FROM Distributors", new DynamicParameters());
-				return output.ToString();
+				SQLiteCommand command = new SQLiteCommand("SELECT * FROM Distributors", connection);
+				connection.Open();
+
+				try
+				{
+					//TODO: Figure out how to correctly stream a query into a useable object
+				}
+
+				catch(Exception ex)
+				{
+					throw new Exception(ex.Message);
+				}
+
+				finally
+				{
+					connection.Close();
+				}
 			}
 		}
 
