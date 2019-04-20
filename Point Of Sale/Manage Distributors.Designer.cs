@@ -28,34 +28,39 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			this.dgvDistributors = new System.Windows.Forms.DataGridView();
+			((System.ComponentModel.ISupportInitialize)(this.dgvDistributors)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// dataGridView1
+			// dgvDistributors
 			// 
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(776, 426);
-			this.dataGridView1.TabIndex = 0;
+			this.dgvDistributors.AllowUserToAddRows = false;
+			this.dgvDistributors.AllowUserToResizeRows = false;
+			this.dgvDistributors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvDistributors.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+			this.dgvDistributors.Location = new System.Drawing.Point(12, 12);
+			this.dgvDistributors.MultiSelect = false;
+			this.dgvDistributors.Name = "dgvDistributors";
+			this.dgvDistributors.Size = new System.Drawing.Size(776, 426);
+			this.dgvDistributors.TabIndex = 0;
+			this.dgvDistributors.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.DgvDistributors_UserDeletingRow);
 			// 
 			// ManageDistributors
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.dataGridView1);
+			this.Controls.Add(this.dgvDistributors);
 			this.Name = "ManageDistributors";
 			this.Text = "Manage Distributors";
 			this.Shown += new System.EventHandler(this.ManageDistributors_Shown);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvDistributors)).EndInit();
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataGridView dgvDistributors;
 	}
 }
