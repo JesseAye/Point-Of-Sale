@@ -203,6 +203,11 @@ namespace Point_Of_Sale
 			}
 		}
 
+		/// <summary>
+		/// Provides a connection string
+		/// </summary>
+		/// <param name="id">If a different id is specified in App.config</param>
+		/// <returns>The connection string</returns>
 		private static string LoadConnectionString(string id = "Default")
 		{
 			return ConfigurationManager.ConnectionStrings[id].ConnectionString;
