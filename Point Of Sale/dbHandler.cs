@@ -25,8 +25,9 @@ namespace Point_Of_Sale
 		/// <returns>Return value will have rows if successful.</returns>
 		public static DataTable ReadDistributors()
 		{
-			DataTable output = new DataTable();
+			DataTable output = new DataTable(); //DataTable to be returned
 
+			//Setup columns in the DataTable
 			output.Columns.Add("Id");
 			output.Columns.Add("CompanyName");
 			output.Columns.Add("ContactName");
@@ -39,15 +40,22 @@ namespace Point_Of_Sale
 				try
 				{
 					connection.Open();
-					SQLiteDataReader reader = command.ExecuteReader();
+					
+					SQLiteDataReader reader = command.ExecuteReader(); //Begin reading the first row
+
+					DataRow row;
+
+					//While there is a line to read
 					while (reader.Read())
 					{
-						DataRow row = output.NewRow();
+						//Copy the values from the PoS.db row to the DataTable row
+						row = output.NewRow();
 						row[0] = reader["Id"];
 						row[1] = reader["CompanyName"];
 						row[2] = reader["ContactName"];
 						row[3] = reader["ContactNumber"];
-						output.Rows.Add(row);
+
+						output.Rows.Add(row); //Add the row to the DataTable
 					}
 				}
 
