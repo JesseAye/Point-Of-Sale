@@ -17,7 +17,9 @@ namespace Point_Of_Sale
             InitializeComponent();
         }
 
-        private void AddDistributorToolStripMenuItem_Click(object sender, EventArgs e)
+		#region ToolStripMenuItem Click Handlers
+
+		private void AddDistributorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddDistributor AddDistWindow = new AddDistributor();
             AddDistWindow.ShowDialog();
@@ -28,5 +30,13 @@ namespace Point_Of_Sale
 			ManageDistributors ManageDistributorsWindow = new ManageDistributors();
 			ManageDistributorsWindow.ShowDialog();
 		}
+
+		private void AddItemsByDistributorToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			AddItemsByDistributor addItemsByDistributorWindow = new AddItemsByDistributor();
+			addItemsByDistributorWindow.ShowDialog();
+		}
+
+		#endregion
 	}
 }

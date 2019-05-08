@@ -70,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add Items By Distributor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add Items By Distributor.Designer.cs">
+      <DependentUpon>Add Items By Distributor.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddDistributor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Add Items By Distributor.resx">
+      <DependentUpon>Add Items By Distributor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddDistributor.resx">
       <DependentUpon>AddDistributor.cs</DependentUpon>
     </EmbeddedResource>
