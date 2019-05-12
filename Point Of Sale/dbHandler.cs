@@ -29,9 +29,9 @@ namespace Point_Of_Sale
 
 			//Setup columns in the DataTable
 			output.Columns.Add("Id");
-			output.Columns.Add("CompanyName");
-			output.Columns.Add("ContactName");
-			output.Columns.Add("ContactNumber");
+			output.Columns.Add("Company_Name");
+			output.Columns.Add("Contact_Name");
+			output.Columns.Add("Contact_Number");
 
 			using (SQLiteConnection connection = new SQLiteConnection(LoadConnectionString()))
 			{
@@ -51,9 +51,9 @@ namespace Point_Of_Sale
 						//Copy the values from the PoS.db row to the DataTable row
 						row = output.NewRow();
 						row[0] = reader["Id"];
-						row[1] = reader["CompanyName"];
-						row[2] = reader["ContactName"];
-						row[3] = reader["ContactNumber"];
+						row[1] = reader["Company_Name"];
+						row[2] = reader["Contact_Name"];
+						row[3] = reader["Contact_Number"];
 
 						output.Rows.Add(row); //Add the row to the DataTable
 					}
@@ -61,6 +61,55 @@ namespace Point_Of_Sale
 
 				catch(Exception ex)
 				{
+					throw new Exception(ex.Message);
+				}
+
+				finally
+				{
+					connection.Close();
+				}
+
+				return output;
+			}
+		}
+
+		/// <summary>
+		/// Gets the existing list of distributors, returning only the name of each distributor
+		/// </summary>
+		/// <returns>Return value will have rows of distributor names if successful.</returns>
+		public static DataTable ReadDistributorNames()
+		{
+			DataTable output = new DataTable(); //DataTable to be returned
+
+			//Setup columns in the DataTable
+			output.Columns.Add("Id");
+			output.Columns.Add("Company_Name");
+
+			using (SQLiteConnection connection = new SQLiteConnection(LoadConnectionString()))
+			{
+				SQLiteCommand command = new SQLiteCommand("SELECT Id, Company_Name FROM Distributors", connection);
+
+				try
+				{
+					connection.Open();
+
+					SQLiteDataReader reader = command.ExecuteReader();
+
+					DataRow row;
+
+					while (reader.Read())
+					{
+						row = output.NewRow();
+						row[0] = reader["Id"];
+						row[1] = reader["Company_Name"];
+
+						output.Rows.Add(row);
+					}
+				}
+
+				catch (Exception ex)
+				{
+
 					throw new Exception(ex.Message);
 				}
 
@@ -88,10 +137,10 @@ namespace Point_Of_Sale
 				using (SQLiteConnection connection = new SQLiteConnection(LoadConnectionString()))
 				{
 					//Setup the command to the db
-					SQLiteCommand command = new SQLiteCommand("INSERT INTO Distributors (CompanyName, ContactName, ContactNumber) VALUES (?, ?, ?)", connection);
-					command.Parameters.AddWithValue("CompanyName", DistName);
-					command.Parameters.AddWithValue("ContactName", ContactName);
-					command.Parameters.AddWithValue("ContactNumber", ContactNumber);
+					SQLiteCommand command = new SQLiteCommand("INSERT INTO Distributors (Company_Name, Contact_Name, Contact_Number) VALUES (?, ?, ?)", connection);
+					command.Parameters.AddWithValue("Company_Name", DistName);
+					command.Parameters.AddWithValue("Contact_Name", ContactName);
+					command.Parameters.AddWithValue("Contact_Number", ContactNumber);
 					command.CommandTimeout = 3;
 
 					//I did it. Instead of having the Open() and the ExecuteNonQuery() sitting on top of eachother like before, I've realized you can try within a try (insert Xzibit meme)
@@ -208,6 +257,57 @@ namespace Point_Of_Sale
 			{
 				//TODO: Restore backup if the program paths to this point.
 				MessageBox.Show("The file PoS.db does not exist in the current directory. Ensure PoS.db exists in the same folder as \"Point Of Sale.exe\"", "Unable to open PoS.db", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		public static DataTable ReadItemsByDistributor(int DistributorID)
+		{
+			DataTable output = new DataTable(); //DataTable to be returned
+
+			//Setup columns in the DataTable
+			output.Columns.Add("Id");
+			output.Columns.Add("Item_Name");
+			output.Columns.Add("Distributor_Id");
+			output.Columns.Add("Purchase_Price");
+
+			using (SQLiteConnection connection = new SQLiteConnection(LoadConnectionString()))
+			{
+				SQLiteCommand command = new SQLiteCommand("SELECT * FROM Distributor_Items WHERE (Distributor_Id = ?)", connection);
+				command.Parameters.AddWithValue("Distributor_Id", DistributorID.ToString());
+
+				try
+				{
+					connection.Open();
+
+					SQLiteDataReader reader = command.ExecuteReader(); //Begin reading the first row
+
+					DataRow row;
+
+					//While there is a line to read
+					while (reader.Read())
+					{
+						//Copy the values from the PoS.db row to the DataTable row
+						row = output.NewRow();
+						row[0] = reader["Id"];
+						row[1] = reader["Item_Name"];
+						row[2] = reader["Distributor_Id"];
+						row[3] = reader["Purchase_Price"];
+
+						output.Rows.Add(row); //Add the row to the DataTable
+					}
+				}
+
+				catch (Exception ex)
+				{
+					throw new Exception(ex.Message);
+				}
+
+				finally
+				{
+					connection.Close();
+				}
+
+				return output;
 			}
 		}
 

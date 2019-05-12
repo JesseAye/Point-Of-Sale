@@ -78,7 +78,7 @@ namespace Point_Of_Sale
 		{
 			if (e.RowIndex >= 0) //Make sure a column header isn't selected
 			{
-				dgvDistributors.ClearSelection();
+				//dgvDistributors.ClearSelection();
 				dgvDistributors.Rows[e.RowIndex].Selected = true;
 			}
 		}
